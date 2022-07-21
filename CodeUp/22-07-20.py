@@ -224,7 +224,7 @@ for i in range(n) :
 min = a[0]
 for i in range(0, n) :
     if a[i] < min :
-        min = a[i] #최솟값 갱신 반복
+        min = a[i] #선택 정렬
 
 print(min)
 # -
@@ -339,9 +339,3 @@ for i in range(19):
 0 0 0 1 0 0 1
 
 board
-
-board[4]
-
-y
-
-

@@ -30,5 +30,9 @@ jupyter:
 - 
 
 ```python
+import pandas as pd
+```
+
+```python
 
 ```

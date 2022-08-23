@@ -14,7 +14,7 @@
 # ---
 
 # +
-# 특정 원소 x가 속한 집합 찾기
+# 특정 원소 x가 속한 집합 찾기(union 연산 이후 사용되는 함수)
 def find_parent(parent, x):
     # 루트 노드가 아니라면, 루트 노드 찾을 때까지 재귀적으로 호출
     if parent[x] != x:
@@ -37,13 +37,13 @@ def union_parent(parent, a, b):
 # 노드(원소) 개수 V & 간선(union 연산) 개수 e
 v, e = map(int, input().split())
 parent = [0] * (v+1) #부모 테이블 초기화
-# 부모 테이블 상에서, 모든 원소의 부모 노드를 자기 자신으로 초기화
+# 부모 테이블 상에서, 모든 원소(인덱스)의 부모 노드를 자기 자신으로 초기화
 for i in range(1, v+1):
     parent[i] = i
 
 # union 연산(간선) 실행
 for i in range(e):
-    a, b = map(int, input().split())
+    a, b = map(int, input().split()) #union 연산 정보 입력
     union_parent(parent, a, b)
     
 # 각 원소가 속한 집합 출력

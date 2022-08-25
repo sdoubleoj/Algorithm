@@ -28,31 +28,31 @@ def union_parent(parent, a, b):
     else:
         parent[a] = b
 
-
+        
 v, e = map(int, input().split())
 parent = [0] * (v+1)
 
-edges = [] #모든 간선을 담을 리스트
-result = 0 #최소 신장 트리를 만드는 최종 비용
+edges = [] #모든 간선 담을 리스트
+result = 0 #최종 비용
 
-for i in range(1, v+1):
-    parent[i] = i
-
-for _ in range(1, v+1):
+#모든 간선 정보
+for _ in range(e):
     a, b, cost = map(int, input().split())
-    edges.append((cost, a, b)) #비용순으로 정렬하기 위해 튜플의 첫 번째 원소를 비용으로 설정
+    edges.append((cost, a, b)) #비용순 정렬을 위해 cost를 첫 번쨰 원소로 설정
 
-# 간선을 비용순으로 정렬
-edges.sort()
+edges.sort() #비용순으로 간선 정렬
+last = 0 #최소 신장 트리에 포함되는 간선 중에서 가장 비용이 큰 간선
 
 
-for edge in edges: #간선을 하나씩 확인하며
+for edge in edges:
     cost, a, b = edge
     #사이클이 발생하지 않는 경우에만 집합에 포함
     # 동일 부모를 가지면 사이클이 발생할 수 있기 때문
     if find_parent(parent, a) != find_parent(parent, b):
         union_parent(parent, a, b)
         result += cost
+        last = cost
 
-        
-print(cost)
+
+#이미 edges는 비용순으로 정렬되어 있기 때문에, 가장 마지막의 cost가 최소 신장 트리를 구성하는 간선 중 최대비용의 간선임
+print(result - cost) 
